@@ -1,9 +1,13 @@
 import React from 'react'
 
-export const ListTodo = () => {
+export const ListTodo = ({stat}) => {
+  console.log(stat)
   return (
     <div>
-    <TodoUi todo={{ name:"working i  pOrtodlio",date:Date.now }}/>        
+      {stat.todo.map((item)=>{
+        return <TodoUi key={item.id} todo={item}/> 
+      })}
+              
     </div>
   )
 }
@@ -12,10 +16,10 @@ export const ListTodo = () => {
 
 const TodoUi = ({todo})=>{
     return<>
-            <div className='w-96 my-4 bg-orange-500 rounded flex justify-between'>
+            <div  className='w-96 my-4 bg-orange-500 rounded flex justify-between'>
                 <div>
                     <p>{todo.name}</p>
-                    <p>{todo.date}</p>
+                    <p>{new Date(todo.date).toLocaleDateString()}</p>
 
                 </div>
                 <div>

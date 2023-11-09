@@ -5,8 +5,10 @@ export const FormTodo = ({disp}) => {
     const [pred,setPeroid] = useState('')
     const HandlingSubmitting =(e)=>{
         e.preventDefault ()
-        disp({type:"Add"})
-
+        
+        disp({type:"Add",pyload:{id:Date.now(),name:todo,date:pred}})
+        setTodo('')
+        setPeroid('')
     }
 
   return (
