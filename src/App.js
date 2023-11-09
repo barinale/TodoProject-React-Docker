@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from 'react'
+import { HeaderTodo } from './Component/HeaderTodo'
+import { FormTodo } from './Component/FormTodo'
+import { ListTodo } from './Component/ListTodo'
+import { reducer } from './Hooks/UseReducer'
+const App = () => {
+  let initialValue = {todo:[]}
+  const [state,dispatch ]= useReducer(reducer,initialValue)
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-gray-600 h-screen flex flex-col justify-between'>
+      <HeaderTodo />
+      <FormTodo disp={dispatch} />
+      <ListTodo />
     </div>
-  );
+  )
 }
-
-export default App;
+export default App
