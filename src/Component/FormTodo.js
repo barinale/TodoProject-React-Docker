@@ -6,7 +6,7 @@ export const FormTodo = ({disp}) => {
     const HandlingSubmitting =(e)=>{
         e.preventDefault ()
         
-        disp({type:"Add",pyload:{id:Date.now(),name:todo,date:pred}})
+        disp({type:"ADD",pyload:{id:Date.now(),name:todo,date:pred}})
         setTodo('')
         setPeroid('')
     }
@@ -24,7 +24,7 @@ export const FormTodo = ({disp}) => {
             <input type='date' required name="Date" value={pred} onChange={(e)=>setPeroid(e.target.value)} className='p-4 w-full border border-gray-600 rounded my-4' />
         </div>
 
-        <button type='submit' className='bg-sky-700 rounded p-4 text-white text-xl'>Submit</button>
+        <button type='submit' className='bg-sky-700 rounded p-4 text-white text-xl block m-auto'>Submit</button>
         </form>
     </div>
   )

@@ -1,11 +1,13 @@
+import { createContext } from "react";
+
 export const reducer = (state,action)=>{
 
     switch(action.type){
-        case "Add":
+        case "ADD":
             return {todo:[...state.todo,action.pyload]}
         break;
-        case "remove":
-            console.log("Rmoving")
+        case "DELETE":
+            return {todo:[...state.todo.filter((item)=>item.id!==action.pyload.id)]}
             break;    
             default:
                 console.log("nothing was habppint form lesitno above")
@@ -13,3 +15,5 @@ export const reducer = (state,action)=>{
     }
 }
 
+
+export const ContextReducer = createContext();
