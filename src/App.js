@@ -22,7 +22,7 @@ const App = () => {
   
   return (
   <ContextReducer.Provider value={{ state,dispatch }}>
-      <div className='bg-gray-600 h-screen flex flex-col justify-between'>
+      <div className='bg-gray-600 h-screen flex flex-col '>
         <HeaderTodo />
         <FormTodo  />
         <ListTodo  />
