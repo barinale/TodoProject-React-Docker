@@ -6,7 +6,11 @@ import { reducer } from './Hooks/UseReducer'
 import { ContextReducer } from './Hooks/UseReducer'
 
 const App = () => {
-  let initialValue = {todo:
+  let initialValue = {
+    Delete:[],
+    Progres:[],
+    Done:[],
+    todo:
     [
     {id:1,name:"nothing to do",date:Date.now()},
     {id:2,name:"nothing to do 1",date:Date.now()},
@@ -20,8 +24,8 @@ const App = () => {
   <ContextReducer.Provider value={{ state,dispatch }}>
       <div className='bg-gray-600 h-screen flex flex-col justify-between'>
         <HeaderTodo />
-        <FormTodo disp={dispatch} />
-        <ListTodo  stat={state}/>
+        <FormTodo  />
+        <ListTodo  />
       </div>
     </ContextReducer.Provider>
   )

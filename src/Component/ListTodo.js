@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import { ContextReducer } from './../Hooks/UseReducer'
 
-export const ListTodo = ({stat}) => {
+export const ListTodo = () => {
+  const {state} = useContext(ContextReducer);
+
+  console.log(state)
   return (
     <div>
-      {stat ?stat.todo.map((item)=>{
-        return <TodoUi key={item.id} todo={item}/> 
+      {state ?state.todo.map((item,index)=>{
+        return <TodoUi key={index} todo={item}/> 
       }):"List is Empt" }
               
     </div>
@@ -16,6 +19,7 @@ export const ListTodo = ({stat}) => {
 
 const TodoUi = ({todo})=>{
   const {dispatch} = useContext(ContextReducer);
+  
     return<>
             <div  className='w-full my-4 bg-orange-500 rounded flex justify-between gap-2'>
                 <div className='grow flex items-center justify-between'>
