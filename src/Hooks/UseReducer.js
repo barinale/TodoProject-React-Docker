@@ -9,6 +9,8 @@ export const reducer = (state,action)=>{
             //function for remove Delete todo from list todo and add it to 
             //Delete Array
             let ItemDelete;
+            console.log(action)
+
             let NewArray = state.todo.filter((item)=>{
                             if(item.id!==action.pyload.id){
                                     return item;
@@ -19,7 +21,6 @@ export const reducer = (state,action)=>{
                             
                             
                         })
-                        console.log(NewArray)
                         
             return {...state,Delete:[...state.Delete,ItemDelete],todo:[...NewArray]}
             default:
