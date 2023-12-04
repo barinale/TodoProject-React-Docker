@@ -12,8 +12,8 @@ const App = () => {
     Done:[],
     todo:
     [
-    {id:1,name:"nothing to do",date:Date.now()},
-    {id:2,name:"nothing to do 1",date:Date.now()},
+    {id:1,name:"Search How Foucs and energy to study can get",date:Date.now()},
+    {id:2,name:"Planning for f day before the day start",date:Date.now()},
     {id:3,name:"nothing to do 12",date:Date.now()},
     {id:4,name:"nothing to do 13",date:Date.now()},
     {id:5,name:"nothing to do 14",date:Date.now()},
