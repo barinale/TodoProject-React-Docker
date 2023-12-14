@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import { ContextReducer } from './../Hooks/UseReducer'
-import { getByDisplayValue } from '@testing-library/react';
 
 export const ListTodo = () => {
   const {state} = useContext(ContextReducer);
    const  keys = Object.keys(state)
-   console.log(state)
   return (
     <div className='flex flex-wrap justify-between'>
 
@@ -27,55 +25,50 @@ export const ListTodo = () => {
 
 const TodoUi = ({todo,type})=>{
   const {dispatch} = useContext(ContextReducer);
-  const Colors = {Delete:'slate',Progres:'blue',Done:'Green',todo:'red'}
+  const Colors = {Delete:'slate',Progres:'blue',Done:'Green',todo:'green'}
   let ButtonDis;
+  //here i make buttons depend on the type of todo and the actin should do for evey button
   switch(type){
       case "Delete":
-      ButtonDis = <><button onClick={()=>{
-                    dispatch({type:'RECOVER_DDELETE',pyload:{id:todo.id}})
-                  }}>Recover</button> <button onClick={()=>{
-                    dispatch({type:'DELETE_FOREVER',pyload:{id:todo.id}})
+      ButtonDis = <><button className={`bg-green-700 p-1 rounded`} onClick={()=>{
+                    dispatch({type:'RECOVER_DELETE_TODO',pyload:{id:todo.id,type:'Recover'}})
+                  }}>Recover</button> <button className={`bg-red-700 p-1 rounded`}  onClick={()=>{
+                    dispatch({type:'RECOVER_DELETE_TODO',pyload:{id:todo.id,type:'DeleteIt'}})
                   }}>Delete It</button>
                   </>
 
       break;
-      case "Progress":
+      case "Progres":
       ButtonDis = <>
-        <button onClick={()=>{dispatch({action:'COMPLETE_TODO',pyload:{id:todo.id}})}}>Complete</button>
-        <button onClick={()=>{dispatch({action:'REMOVE_FROM_ROGRESS',pyload:{id:todo.id}})}}>Remove from Progres</button>
+        <button className={`bg-amber-700 p-1 rounded`} onClick={()=>{dispatch({type:'COMPLETE_REMOVE_PROGRESS_TODO',pyload:{id:todo.id,type:'Complete'}})}}>Complete</button>
+        <button className={`bg-emerald-700 p-1 rounded`} onClick={()=>{dispatch({type:'COMPLETE_REMOVE_PROGRESS_TODO',pyload:{id:todo.id,type:'Remove'}})}}>Remove from Progres</button>
       </>
       break;
       case "Done":
         ButtonDis = <>
-                  <button onClick={()=>{dispatch({action:'',pyload:{id:todo.id}})}}></button>
-                  <button onClick={()=>{dispatch({action:'',pyload:{id:todo.id}})}}></button>
+                  <button className={`bg-blue-700 p-1 rounded`} onClick={()=>{dispatch({type:'BACK_TO_PROGESS',pyload:{id:todo.id}})}}>back it To Progress</button>
             </>
       break;
       case "todo":
           ButtonDis =
           <>
-            <button onClick={()=>{dispatch({action:'',pyload:{id:todo.id}})}}></button>
-            <button onClick={()=>{dispatch({action:'',pyload:{id:todo.id}})}}></button>
+            <button className={`bg-green-700 p-1 rounded`} onClick={()=>{dispatch({type:'DELETE_START_TODO',pyload:{id:todo.id,type:"start"}})}}>start</button>
+            <button className={`bg-red-700 p-1 rounded`} onClick={()=>{dispatch({type:'DELETE_START_TODO',pyload:{id:todo.id,type:"delete"}})}}>delete</button>
           </>
       break; 
       default:
-        ButtonDis = <button onClick={}>Nothing </button>
+        ButtonDis = <span>Nothing</span>
   }
     return<>
-{<div>{ButtonDis}</div>}
 
-            <div  className={`w-50 my-4 bg-${Colors[type]}-500 rounded flex justify-between gap-2`}>
+            <div  className={`w-50 my-4 rounded flex justify-between gap-2`}>
                 <div className='grow flex items-center justify-between'>
                     <p>{todo.name}</p>
                     <p>{new Date(todo.date).toLocaleDateString()}</p>
                 </div>
 
-                <div className=''>
-                    <button className='bg-green-500 font-bold rounded p-4 mr-2' onClick={()=>{
-                      dispatch({type:"DELETE_START_TODO",pyload:{id:todo.id,type:'start'}})
-                    }}>Start</button>
-                    <button onClick={()=>dispatch({type:"DELETE_START_TODO",pyload:{id:todo.id,type:'delete'}})} 
-                    className='bg-red-500 font-bold rounded p-4'>Delete</button>
+                <div className='py-2'>
+                    {ButtonDis}
                 </div>
             </div>
     </>

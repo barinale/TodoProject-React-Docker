@@ -18,7 +18,7 @@ const App = () => {
     {id:4,name:"nothing to do 13",date:Date.now()},
     {id:5,name:"nothing to do 14",date:Date.now()},
     {id:6,name:"nothing to do 15",date:Date.now()}]}
-  const [state,dispatch ]= useReducer(reducer,initialValue)
+    const [state,dispatch ]= useReducer(reducer,initialValue)
   
   return (
   <ContextReducer.Provider value={{ state,dispatch }}>
