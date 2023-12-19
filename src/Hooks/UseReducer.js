@@ -2,16 +2,18 @@ import { createContext } from "react";
 import { Storage } from "./Storage";
 
 export const reducer = (state,action)=>{
-
+    
     switch(action.type){
         //this case is for response for adding all item from localstorage 
 
         case "InitialFirst":
-            console.log(action.pyload.type,[...action.pyload.list]);
+            
+        state[action.pyload.type] = [...action.pyload.list];
+
+            
             return state;
-        break;
         case "ADD":
-            Storage.storeData('todo',state.todo,action.pyload);
+            Storage.storeData('todo',[...state.todo,action.pyload]);
             return {...state,todo:[...state.todo,action.pyload]}
         case "DELETE_START_TODO":
             //function for remove Delete todo from list todo and add it to 
@@ -32,8 +34,15 @@ export const reducer = (state,action)=>{
                             
                         })
                         if(action.pyload.type=='delete'){
+                         Storage.storeData('Delete',[...state.Delete,NewItem]);
+                         Storage.storeData('todo',[...NewArray]);
+
+                            
                             return {...state,Delete:[...state.Delete,NewItem],todo:[...NewArray]}
                         }else{
+                            Storage.storeData('Progres',[...state.Progres,NewItem]);
+                            Storage.storeData('todo',[...NewArray]);
+
                             return {...state,Progres:[...state.Progres,NewItem],todo:[...NewArray]}
                         }
         case "COMPLETE_REMOVE_PROGRESS_TODO":
@@ -51,9 +60,15 @@ export const reducer = (state,action)=>{
                                     
                                         
         })
-        if(action.pyload.type=="Complete")
+        if(action.pyload.type=="Complete"){
+            Storage.storeData('Done',[...state.Done,NewItem1]);
+            Storage.storeData('Progres',[...NewArray1]);
         return {...state,Done:[...state.Done,NewItem1],Progres:[...NewArray1]}
-        else{return {...state,todo:[...state.todo,NewItem1],Progres:[...NewArray1]}}
+        }
+        else{
+            Storage.storeData('todo',[...state.todo,NewItem1]);
+            Storage.storeData('Progres',[...NewArray1]);
+            return {...state,todo:[...state.todo,NewItem1],Progres:[...NewArray1]}}
             
         case "BACK_TO_PROGESS":
                     let NewItem2;
@@ -68,6 +83,8 @@ export const reducer = (state,action)=>{
                               
                                 
                             })
+                            Storage.storeData('Progres',[...state.Progres,NewItem2]);
+                            Storage.storeData('Done',[...NewArray2]);
             return {...state,Progres:[...state.Progres,NewItem2],Done:[...NewArray2]}
         case "RECOVER_DELETE_TODO":
             let NewItem3;
@@ -83,8 +100,12 @@ export const reducer = (state,action)=>{
                         
                     })
                     if(action.pyload.type=="Recover"){
-                    return {...state,todo:[...state.todo,NewItem3],Delete:[...NewArray3]}}
+                        Storage.storeData('todo',[...state.todo,NewItem3]);
+                            Storage.storeData('Delete',[...NewArray3]);
+                        return {...state,todo:[...state.todo,NewItem3],Delete:[...NewArray3]}
+                }
                     else{
+                            Storage.storeData('Delete',[...NewArray3]);
                         return {...state,Delete:[...NewArray3]}}
                                     
             default:

@@ -13,7 +13,7 @@ export const ListTodo = () => {
           <TodoUi key={item.id} todo={item} type={key} />
         ))
       )
-      }
+      } 
 
     
     </div>

@@ -1,4 +1,4 @@
-import React, {  useEffect, useReducer } from 'react'
+import React, {  useEffect, useReducer, useState } from 'react'
 import { HeaderTodo } from './Component/HeaderTodo'
 import { FormTodo } from './Component/FormTodo'
 import { ListTodo } from './Component/ListTodo'
@@ -7,7 +7,7 @@ import { ContextReducer } from './Hooks/UseReducer'
 import { Storage } from './Hooks/Storage'
 
 const App = () => {
-  
+  const [dataFetched,setDataFetched] = useState(false);
 
   let initialValue = {
     Delete:[],
@@ -17,12 +17,27 @@ const App = () => {
     
     const [state,dispatch ]= useReducer(reducer,initialValue)
 
-    useEffect(()=>{
-      for(const key in initialValue){          
-          dispatch({type:'InitialFirst',pyload:{type:key,list:[...Storage.getData(key)]}});
-      }
-    },[])
 
+    const data = async ()=>{
+      try{
+
+        for(const key in initialValue){          
+          const getDat = await Storage.getData(key);
+          await dispatch({type:'InitialFirst',pyload:{type:key,list:getDat}});
+          setDataFetched(true)
+        }
+      }
+      catch(error){
+        console.log("error Fetching Data from LocalStorage",error)
+      }
+      }
+      useEffect(()=>{
+    
+        data()
+      },[])
+      if(!dataFetched){
+        return <>Still In Progress</>
+      }
   return (
   <ContextReducer.Provider value={{ state,dispatch }}>
       <div className='bg-gray-600 h-screen flex flex-col '>

@@ -6,9 +6,10 @@ export class Storage {
 
     static getData(key){
     const StoredData = localStorage.getItem(key)
-
-    return StoredData ? [JSON.parse(StoredData)]:[];
+    return StoredData ? JSON.parse(StoredData):[];
     }
+
+
   
 }
 
