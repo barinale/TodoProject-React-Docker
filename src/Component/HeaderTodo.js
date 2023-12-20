@@ -1,21 +1,40 @@
 import React, { useContext } from 'react'
 import { ContextReducer } from '../Hooks/UseReducer'
+import trash from './../icons/trash.svg'
+import Progress from './../icons/Progress.svg'
+import todo from './../icons/todo.svg'
+import done from './../icons/done.svg'
 
 export const HeaderTodo = () => {
     const {state} = useContext(ContextReducer)
   return (
-    <div className='bg-slate-700 flex justify-between'>
-        <div className='bg-green-700 h-40 w-40 rounded flex justify-center items-center '>
-            <h4 className='text-fuchsia-50 font-bold text-lg inline-block  '>Done : {state.Done.length}</h4>
+    <div className='bg-gray-200 flex flex-col gap-2 p-4'>
+        <div className=''>
+            <h4 className='flex gap-2'>
+                <img src={done} alt="trashImage" className='w-4'/>
+                Done : {state.Done.length}
+            </h4>
         </div>
-        <div className='bg-red-700 h-40 w-40 rounded flex justify-center items-center '>
-            <h4 className='text-fuchsia-50 font-bold text-lg inline-block  '>Delete : {state.Delete.length}</h4>
+        <div className=''>
+            <h4 className='flex gap-2'>
+                <img src={trash} alt="trashImage" className='w-4'/>
+
+                Delete : {state.Delete.length}
+            </h4>
         </div>
-        <div className='bg-blue-700 h-40 w-40 rounded flex justify-center items-center '>
-            <h4 className='text-fuchsia-50 font-bold text-lg inline-block  '>Progress :{state.Progres.length}</h4>
+        <div className=''>
+            <h4 className='flex gap-2'>
+                <img src={Progress} alt="trashImage" className='w-4'/>
+
+                Progress :{state.Progres.length}
+            </h4>
         </div>
-        <div className='bg-slate-300 h-40 w-40 rounded flex justify-center items-center '>
-            <h4 className='text-fuchsia-50 font-bold text-lg inline-block  '>Not Started :{state.todo.length}</h4>
+        <div className=''>
+            <h4 className='flex gap-2'>
+                <img src={todo} alt="trashImage" className='w-4'/>
+
+                Not Started :{state.todo.length}
+            </h4>
         </div>
     </div>
   )
