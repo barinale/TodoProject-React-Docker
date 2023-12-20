@@ -4,8 +4,8 @@ import { ContextReducer } from './../Hooks/UseReducer'
 export const ListTodo = () => {
   const {state} = useContext(ContextReducer);
    const  keys = Object.keys(state)
-  return (
-    <div className='flex flex-wrap justify-between'>
+  return <div className='self-stretch	px-2'>
+    <div className='flex flex-wrap justify-between bg-red-200'>
 
       {
       keys.flatMap((key) =>
@@ -18,7 +18,7 @@ export const ListTodo = () => {
     
     </div>
 
-  )
+    </div>
 }
 
 

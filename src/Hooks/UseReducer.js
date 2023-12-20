@@ -3,6 +3,8 @@ import { Storage } from "./Storage";
 
 export const reducer = (state,action)=>{
     
+    console.log("we are Rendersind")
+
     switch(action.type){
         //this case is for response for adding all item from localstorage 
 

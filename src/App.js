@@ -42,8 +42,10 @@ const App = () => {
   <ContextReducer.Provider value={{ state,dispatch }}>
       <div className='bg-gray-100 h-screen flex '>
         <HeaderTodo />
-        <FormTodo  />
-        <ListTodo  />
+        <div className='flex flex-col items-center w-full'>
+            <FormTodo  />
+            <ListTodo  />
+        </div>
       </div>
     </ContextReducer.Provider>
   )

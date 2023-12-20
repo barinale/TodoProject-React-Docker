@@ -8,7 +8,7 @@ import done from './../icons/done.svg'
 export const HeaderTodo = () => {
     const {state} = useContext(ContextReducer)
   return (
-    <div className='bg-gray-200 flex flex-col gap-2 p-4'>
+    <div className='w-1/3 bg-gray-200 flex flex-col gap-2 p-4'>
         <div className=''>
             <h4 className='flex gap-2'>
                 <img src={done} alt="trashImage" className='w-4'/>
