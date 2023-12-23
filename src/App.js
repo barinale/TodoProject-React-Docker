@@ -10,10 +10,11 @@ const App = () => {
   const [dataFetched,setDataFetched] = useState(false);
 
   let initialValue = {
-    Delete:[],
+    todo:[],
     Progres:[],
-    Done:[],
-    todo:[]}
+    Completed:[],
+    Delete:[],
+    }
     
     const [state,dispatch ]= useReducer(reducer,initialValue)
 

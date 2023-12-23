@@ -12,7 +12,7 @@ export const HeaderTodo = () => {
         <div className=''>
             <h4 className='flex gap-2'>
                 <img src={done} alt="trashImage" className='w-4'/>
-                Done : {state.Done.length}
+                Done : {state.Completed.length}
             </h4>
         </div>
         <div className=''>

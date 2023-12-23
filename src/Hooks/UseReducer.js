@@ -58,14 +58,12 @@ export const reducer = (state,action)=>{
         }
         else {
             NewItem1 = item;
-        }            
-                                    
-                                        
+        }                                                                                        
         })
         if(action.pyload.type=="Complete"){
-            Storage.storeData('Done',[...state.Done,NewItem1]);
+            Storage.storeData('Completed',[...state.Completed,NewItem1]);
             Storage.storeData('Progres',[...NewArray1]);
-        return {...state,Done:[...state.Done,NewItem1],Progres:[...NewArray1]}
+        return {...state,Completed:[...state.Completed,NewItem1],Progres:[...NewArray1]}
         }
         else{
             Storage.storeData('todo',[...state.todo,NewItem1]);
@@ -75,7 +73,7 @@ export const reducer = (state,action)=>{
         case "BACK_TO_PROGESS":
                     let NewItem2;
 
-                    let NewArray2 = state.Done.filter((item)=>{
+                    let NewArray2 = state.Completed.filter((item)=>{
                                 if(item.id!==action.pyload.id){
                                                                 return item;
                                                             }
@@ -86,8 +84,8 @@ export const reducer = (state,action)=>{
                                 
                             })
                             Storage.storeData('Progres',[...state.Progres,NewItem2]);
-                            Storage.storeData('Done',[...NewArray2]);
-            return {...state,Progres:[...state.Progres,NewItem2],Done:[...NewArray2]}
+                            Storage.storeData('Completed',[...NewArray2]);
+            return {...state,Progres:[...state.Progres,NewItem2],Completed:[...NewArray2]}
         case "RECOVER_DELETE_TODO":
             let NewItem3;
 

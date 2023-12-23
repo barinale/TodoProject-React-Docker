@@ -5,13 +5,21 @@ export const ListTodo = () => {
   const {state} = useContext(ContextReducer);
    const  keys = Object.keys(state)
   return <div className='self-stretch	px-2'>
-    <div className='flex flex-wrap justify-between bg-red-200'>
+    <div className='flex flex-col flex-wrap justify-between '>
 
       {
       keys.flatMap((key) =>
-        state[key].map((item) => (
+        {
+          let phrase = key =='Progres' ? 'In Progress ':key;
+          return<div className='bg-gray-200'>  
+        <h1 className='bg-white rounded p-2'>{phrase} :</h1>
+        {state[key].map((item) => (
           <TodoUi key={item.id} todo={item} type={key} />
-        ))
+        ))}
+
+        <br/>
+        </div>
+        }
       )
       } 
 
@@ -44,7 +52,7 @@ const TodoUi = ({todo,type})=>{
         <button className={`bg-emerald-700 p-1 rounded`} onClick={()=>{dispatch({type:'COMPLETE_REMOVE_PROGRESS_TODO',pyload:{id:todo.id,type:'Remove'}})}}>Remove from Progres</button>
       </>
       break;
-      case "Done":
+      case "Completed":
         ButtonDis = <>
                   <button className={`bg-blue-700 p-1 rounded`} onClick={()=>{dispatch({type:'BACK_TO_PROGESS',pyload:{id:todo.id}})}}>back it To Progress</button>
             </>
