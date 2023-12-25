@@ -4,6 +4,7 @@ import trash from './../icons/trash.svg'
 import Progress from './../icons/Progress.svg'
 import todo from './../icons/todo.svg'
 import done from './../icons/done.svg'
+import { Link } from 'react-router-dom'
 
 export const HeaderTodo = () => {
     const {state} = useContext(ContextReducer)
@@ -35,6 +36,11 @@ export const HeaderTodo = () => {
 
                 Not Started :{state.todo.length}
             </h4>
+        </div>
+        <div>
+        <Link to="/NextWeak" >For Next Week</Link>
+
+
         </div>
     </div>
   )
