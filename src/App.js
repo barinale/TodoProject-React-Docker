@@ -1,8 +1,6 @@
 import React, {  useEffect, useReducer, useState } from 'react'
 
 import { HeaderTodo } from './Component/HeaderTodo'
-import { FormTodo } from './Component/FormTodo'
-import { ListTodo } from './Component/ListTodo'
 import { reducer } from './Hooks/UseReducer'
 import { ContextReducer } from './Hooks/UseReducer'
 import { Storage } from './Hooks/Storage'
@@ -19,10 +17,16 @@ const App = () => {
   const [dataFetched,setDataFetched] = useState(false);
 
   let initialValue = {
-    todo:[],
-    Progres:[],
-    Completed:[],
-    Delete:[],
+    task:{
+          todo:[],
+          Progres:[],
+          Completed:[],
+          Delete:[]},
+    DateT:{
+      NextWeak:[],
+      NextMounth:[],
+      NextYear:[]
+    }
     }
     
     const [state,dispatch ]= useReducer(reducer,initialValue)
@@ -30,8 +34,8 @@ const App = () => {
 
     const data = async ()=>{
       try{
-
-        for(const key in initialValue){          
+        for(const key in initialValue.task){
+          console.log(key)          
           const getDat = await Storage.getData(key);
           await dispatch({type:'InitialFirst',pyload:{type:key,list:getDat}});
           setDataFetched(true)

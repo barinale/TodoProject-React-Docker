@@ -13,28 +13,28 @@ export const HeaderTodo = () => {
         <div className=''>
             <h4 className='flex gap-2'>
                 <img src={done} alt="trashImage" className='w-4'/>
-                Done : {state.Completed.length}
+                Done : {state.task.Completed.length}
             </h4>
         </div>
         <div className=''>
             <h4 className='flex gap-2'>
                 <img src={trash} alt="trashImage" className='w-4'/>
 
-                Delete : {state.Delete.length}
+                Delete : {state.task.Delete.length}
             </h4>
         </div>
         <div className=''>
             <h4 className='flex gap-2'>
                 <img src={Progress} alt="trashImage" className='w-4'/>
 
-                Progress :{state.Progres.length}
+                Progress :{state.task.Progres.length}
             </h4>
         </div>
         <div className=''>
             <h4 className='flex gap-2'>
                 <img src={todo} alt="trashImage" className='w-4'/>
 
-                Not Started :{state.todo.length}
+                Not Started :{state.task.todo.length}
             </h4>
         </div>
         <div>

@@ -3,8 +3,10 @@ import { ContextReducer } from './../Hooks/UseReducer'
 import { VerififyTime } from '../Hooks/VerififyTime';
 export const ListTodo = () => {
   const very = VerififyTime();
+
   const {state} = useContext(ContextReducer);
-   const  keys = Object.keys(state)
+
+   const  keys = Object.keys(state.task)
   return <div className='self-stretch	px-2'>
     <div className='flex flex-col flex-wrap justify-between '>
 
@@ -14,7 +16,7 @@ export const ListTodo = () => {
           let phrase = key =='Progres' ? 'In Progress ':key;
           return<div className='bg-gray-200'>  
         <h1 className='bg-white rounded p-2'>{phrase} :</h1>
-        {state[key].map((item) => (
+        {state.task[key].map((item) => (
           <TodoUi key={item.id} todo={item} type={key} />
         ))}
 

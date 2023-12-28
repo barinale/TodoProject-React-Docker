@@ -7,7 +7,7 @@ export const VerififyTime = () => {
   
     const data = async ()=>{
         try{
-             for(const key in state){          
+             for(const key in state.task){          
                   const getDat = await Storage.getData(key);
                   await dispatch({type:'InitialFirst',pyload:{type:key,list:getDat}});
               }
