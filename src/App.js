@@ -37,11 +37,9 @@ const App = () => {
                 Progres:[],
                 Completed:[],
                 Delete:[]}){
-          console.log(key)          
           const getDat = await Storage.getData(key);
           await dispatch({type:'InitialFirst',pyload:{type:key,list:getDat}});
           setDataFetched(true)
-          console.log(" i have Rendered")
         }
       }
       catch(error){

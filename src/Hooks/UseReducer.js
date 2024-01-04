@@ -105,7 +105,6 @@ export const reducer = (state,action)=>{
                         
                         
                     })
-                    console.log(NewArray3);
                     if(action.pyload.type==="Recover"){
                         Storage.storeData('todo',[...state.task.todo,NewItem3]);
                             Storage.storeData('Delete',[...NewArray3]);
