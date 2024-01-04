@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import { ContextReducer } from './../Hooks/UseReducer'
-import { VerififyTime } from '../Hooks/VerififyTime';
 export const ListTodo = () => {
-  const very = VerififyTime();
 
   const {state} = useContext(ContextReducer);
 
@@ -13,7 +11,7 @@ export const ListTodo = () => {
       {
       keys.flatMap((key) =>
         {
-          let phrase = key =='Progres' ? 'In Progress ':key;
+          let phrase = key ==='Progres' ? 'In Progress ':key;
           return<div className='bg-gray-200'>  
         <h1 className='bg-white rounded p-2'>{phrase} :</h1>
         {state.task[key].map((item) => (
@@ -36,7 +34,6 @@ export const ListTodo = () => {
 
 const TodoUi = ({todo,type})=>{
   const {dispatch} = useContext(ContextReducer);
-  const Colors = {Delete:'slate',Progres:'blue',Done:'Green',todo:'green'}
   let ButtonDis;
   //here i make buttons depend on the type of todo and the actin should do for evey button
   switch(type){

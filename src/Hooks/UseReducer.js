@@ -26,15 +26,16 @@ export const reducer = (state,action)=>{
 
             let NewArray = state.task.todo.filter((item)=>{
                             if(item.id!==action.pyload.id){
-                                    return item;
+                                    return true;
                                         }
                             else {
                                 NewItem = item;
+                                return false;
                             }            
                           
                             
                         })
-                        if(action.pyload.type=='delete'){
+                        if(action.pyload.type==='delete'){
                          Storage.storeData('Delete',[...state.task.Delete,NewItem]);
                          Storage.storeData('todo',[...NewArray]);
 
@@ -55,13 +56,14 @@ export const reducer = (state,action)=>{
 
         let NewArray1 = state.task.Progres.filter((item)=>{
         if(item.id!==action.pyload.id){
-            return item;
+            return true;
         }
         else {
             NewItem1 = item;
+            return false;
         }                                                                                        
         })
-        if(action.pyload.type=="Complete"){
+        if(action.pyload.type==="Complete"){
             Storage.storeData('Completed',[...state.task.Completed,NewItem1]);
             Storage.storeData('Progres',[...NewArray1]);
         return {...state,task:{...state.task,Completed:[...state.task.Completed,NewItem1],Progres:[...NewArray1]}}
@@ -77,10 +79,11 @@ export const reducer = (state,action)=>{
 
                     let NewArray2 = state.task.Completed.filter((item)=>{
                                 if(item.id!==action.pyload.id){
-                                                                return item;
+                                                                return true;
                                                             }
                                 else {
                                     NewItem2 = item;
+                                    return false;
                                 }            
                               
                                 
@@ -93,15 +96,17 @@ export const reducer = (state,action)=>{
 
             let NewArray3 = state.task.Delete.filter((item)=>{
                         if(item.id!==action.pyload.id){
-                                                        return item;
+                                                        return true;
                                                     }
                         else {
                             NewItem3 = item;
+                            return false;
                         }            
                         
                         
                     })
-                    if(action.pyload.type=="Recover"){
+                    console.log(NewArray3);
+                    if(action.pyload.type==="Recover"){
                         Storage.storeData('todo',[...state.task.todo,NewItem3]);
                             Storage.storeData('Delete',[...NewArray3]);
                         return {...state,task:{...state.task,todo:[...state.task.todo,NewItem3]},Delete:[...NewArray3]}
