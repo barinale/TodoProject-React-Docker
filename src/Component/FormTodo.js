@@ -26,7 +26,7 @@ export const FormTodo = () => {
   return (
     <div className='w-full bg-blue-400 flex justify-between'>
         <div>
-            <form onSubmit={HandlingSubmitting} className='bg-gray-200 flex p-2 '>
+            <form onSubmit={HandlingSubmitting} className='bg-gray-200 flex p-2' autoComplete="off">
             <div className=''>
                 <input type='text' required placeholder='Entre Todo Name' name='todo' value={todo} 
                 onChange={(e)=>setTodo(e.target.value)} className='p-2'  />
