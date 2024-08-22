@@ -10,12 +10,6 @@ To run the app using Docker:
    docker build -t my-react-app .
    
 3. **Run the Docker container:**   
-
-
-🚀 Start the container:
-
-Copy code
-
 docker run -p 3000:3000 my-react-app
 
 🌐 Open http://localhost:3000 to view it in your browser.
